@@ -1,0 +1,26 @@
+
+     <hbox>
+        <vbox>
+            <hlayout>
+             Model : <combobox id="addnew" width="150px"
+                  model="@bind(vm.carModels)" instant="true" selectedItem=" @save(vm.newCar.model)">
+                    <template name="abc">
+                        <comboitem label="@load(each)" />
+                    </template>
+                </combobox>
+            </hlayout>
+            <hlayout>
+                Make : <textbox width="150px" value=" @save(vm.newCar.make) @validator('validate.BaseValid', constraint='noempty')" instant="true" style="font-weight:bold"/>
+            	<label value="@load(vmsgs[self.previousSibling])" style="color:red"/>  
+            </hlayout>
+            <hlayout>
+                Year : <textbox constraint="no empty"  width="150px" value=" @save(vm.newCar.year )" instant="true" style="font-weight:bold"/>
+            </hlayout>
+            <hlayout>
+            	Price : <intbox id="newPrice" value="@save(vm.newCar.price) @validator('validate.BaseValid', constraint='noempty|minwith', max=10)" instant="true" style="font-weight:bold"/>        
+            	<label value="@load(vmsgs[self.previousSibling])" style="color:red"/>   
+            	</hlayout>
+            <button label="Add new"  onClick="@command('addNew')" />
+        </vbox>
+    </hbox>
+       
